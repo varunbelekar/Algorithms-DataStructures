@@ -13,6 +13,10 @@ public class BinaryTreeDriver {
 		
 		System.out.println("PostOrder Traversal");
 		searchTree.postOrder(root);
+		
+		System.out.println("Minimum element");
+		System.out.println(searchTree.mininumElement(root));
+		
 	}
 
 	private static BstNode  createBST() {

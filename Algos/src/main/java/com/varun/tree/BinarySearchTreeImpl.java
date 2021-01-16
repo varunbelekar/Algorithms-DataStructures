@@ -51,4 +51,12 @@ public class BinarySearchTreeImpl implements BinarySearchTree{
 		System.out.print(root.data + " ");
 	}
 
+	@Override
+	public int mininumElement(BstNode root) {
+		while(root.left != null) {
+			root = root.left;
+		}
+		return root.data;
+	}
+	
 }
