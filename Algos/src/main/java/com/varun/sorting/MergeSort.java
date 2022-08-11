@@ -18,24 +18,31 @@ public class MergeSort {
     }
 
     private static void merge(int[] arr, int left, int right, int middle){
-        List<Integer> temp = new ArrayList<>();
-        int i = left, j = middle + 1, k = left;
-        while (i <= middle && j <= right){
-            if (arr[i] <= arr[j]){
-                temp.add(arr[i++]);
-            }else {
-                temp.add(arr[j++]);
-            }
+        int[] temp1 = new int[middle - left + 1];
+        int[] temp2 = new int[right - middle];
+
+        for (int i = 0, j = left; i < temp1.length; i++, j++) {
+            temp1[i] = arr[j];
         }
-        while (i <= middle){
-            temp.add(arr[i++]);
-        }
-        while (j <= right){
-            temp.add(arr[j++]);
+        for (int i = 0, j = middle + 1; i < temp2.length; i++, j++) {
+            temp2[i] = arr[j];
         }
 
-        for (int num :temp) {
-            arr[k++] = num;
+        //Merge two sorted arrays
+        int i = 0, j = 0, k = left;
+        while (i < temp1.length && j < temp2.length){
+            if (temp1[i] <= temp2[j]){
+                arr[k++] = temp1[i++];
+            }else{
+                arr[k++] = temp2[j++];
+            }
+        }
+
+        while (i < temp1.length){
+            arr[k++] = temp1[i++];
+        }
+        while (j < temp2.length){
+            arr[k++] = temp2[j++];
         }
     }
 
